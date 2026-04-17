@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="preconnect" href="https://i.imgur.com">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Garanta já seu produto e experimente uma nova era de conforto. Solução prática e eficaz para seu dia a dia. Desfrute de benefícios únicos agora." />
@@ -420,7 +421,7 @@ time {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
+    left: 0;
     width: 200%;
     height: 100%;
     background: linear-gradient(
@@ -429,6 +430,9 @@ time {
         rgba(255, 255, 255, 0.25),
         transparent
     );
+    /* Use transform instead of left to move animation to the compositor thread */
+    transform: translateX(-100%);
+    will-change: transform;
     animation: shimmer 3.5s linear infinite; /* loop constante */
     z-index: 0;
 }
@@ -446,13 +450,13 @@ time {
 /* ====== animação do brilho ====== */
 @keyframes shimmer {
     0% {
-        left: -200%;
+        transform: translateX(-100%);
     }
     50% {
-        left: 100%;
+        transform: translateX(50%);
     }
     100% {
-        left: -200%;
+        transform: translateX(-100%);
     }
 }
 
@@ -776,7 +780,7 @@ li{
     </section>
 
     <section style="text-align: center; padding: 10px 0;">
-        <img src="https://i.imgur.com/aDXhHHI.png" class="img-selos" alt="{1t} screenshot">
+        <img src="https://i.imgur.com/aDXhHHI.png" class="img-selos" alt="{1t} screenshot" decoding="async">
     </section>
 
     <section id="beneficios" name="2c">
@@ -825,9 +829,9 @@ li{
             <h2>{6t}</h2>
             <p>{6c}</p>
             <div class="imgs-cientific">
-                <img src="https://i.imgur.com/EEx4ucp.jpeg" class="img-cientific" alt="{1t} cientific 1">
-                <img src="https://i.imgur.com/sR3L8MK.jpeg" class="img-cientific" alt="{1t} cientific 2">
-                <img src="https://i.imgur.com/TKEPga4.jpeg" class="img-cientific" alt="{1t} cientific 3">
+                <img src="https://i.imgur.com/EEx4ucp.jpeg" class="img-cientific" alt="{1t} cientific 1" decoding="async">
+                <img src="https://i.imgur.com/sR3L8MK.jpeg" class="img-cientific" alt="{1t} cientific 2" decoding="async">
+                <img src="https://i.imgur.com/TKEPga4.jpeg" class="img-cientific" alt="{1t} cientific 3" decoding="async">
             </div>
             <div class="references" name="6c2">
                 <ul id="references">
@@ -891,7 +895,7 @@ li{
             <h2>Veredito Final</h2>
             <p>Com base em nossa análise completa das características do produto, funcionamento, diferenciais, evidências disponíveis e relatos de usuários, o modelacaps se mostra uma solução legítima e bem avaliada, com potencial para entregar resultados consistentes quando utilizado conforme as recomendações. Sua proposta foi desenvolvida para atender a uma necessidade específica do público, oferecendo uma abordagem prática, segura e alinhada ao que promete, o que explica sua crescente popularidade entre os consumidores e, portanto, está...</p>
             <p class="approved">APROVADO!</p>
-            <img src="https://i.imgur.com/rOeo99a.png" class="img-stars" alt="{1t} approved">
+            <img src="https://i.imgur.com/rOeo99a.png" class="img-stars" alt="{1t} approved" loading="lazy" decoding="async">
         </div>
     </section>
     <section id="onde-comprar">
@@ -903,7 +907,7 @@ li{
         </div>
     </section>
     <section style="text-align: center;">
-        <img src="https://i.imgur.com/aDXhHHI.png" class="img-selos" alt="{1t} guarantee">
+        <img src="https://i.imgur.com/aDXhHHI.png" class="img-selos" alt="{1t} guarantee" loading="lazy" decoding="async">
     </section>
     </main>
 
@@ -967,10 +971,10 @@ li{
         blist.innerHTML += `<div class="testimonial-card">
             <p>"${element.history}"</p>
             <div class="testimonial-footer">
-                <img src="https://i.imgur.com/${element.gender === 'male' ? male_list[index] :  female_list[index]}.png" class="avatar" alt="${element.gender} ${index}">
+                <img src="https://i.imgur.com/${element.gender === 'male' ? male_list[index] :  female_list[index]}.png" class="avatar" alt="${element.gender} ${index}" loading="lazy" decoding="async">
                 <div class="right">
                     <div class="testimonial-name">${element.name}</div>
-                    <div><img src="https://i.imgur.com/rOeo99a.png" class="test-star" alt="star"></div>
+                    <div><img src="https://i.imgur.com/rOeo99a.png" class="test-star" alt="star" loading="lazy" decoding="async"></div>
                 </div>
             </div>
         </div>`;
