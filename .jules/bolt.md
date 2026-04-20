@@ -1,0 +1,3 @@
+## 2025-04-20 - CSS Animation and Image Decoding Optimization
+**Learning:** Using `left` for animations triggers the layout and paint stages of the rendering pipeline on every frame, which is computationally expensive. Switching to `transform: translateX()` offloads this to the compositor thread, significantly reducing main-thread work. Additionally, replacing non-standard `<image>` tags with `<img>` and adding `decoding="async"` ensures that image decoding doesn't block the main thread, improving page responsiveness during load.
+**Action:** Always prefer `transform` and `opacity` for animations. Use `decoding="async"` for non-critical images to improve TBT (Total Blocking Time).
