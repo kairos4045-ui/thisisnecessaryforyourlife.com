@@ -1,0 +1,3 @@
+## 2025-04-21 - Image Loading Optimization Strategies
+**Learning:** For landing pages with large base64 hero images and many external assets (Imgur), a combination of preconnect, decoding="async", and strategic loading="lazy" is highly effective. However, lazy loading images too close to the hero section (like the first set of trust badges) can negatively impact LCP on some devices. Also, standard diff tools struggle with massive base64 strings in HTML, making line-based 'sed' edits more reliable.
+**Action:** Always preconnect to external asset domains. Apply decoding="async" even to base64 images to offload the main thread. Apply loading="lazy" only to images clearly below the fold.
