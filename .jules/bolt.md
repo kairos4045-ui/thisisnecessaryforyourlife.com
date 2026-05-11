@@ -1,0 +1,3 @@
+## 2025-05-11 - Image Optimization & Resource Hints
+**Learning:** Some landing pages in this codebase use the non-standard `<image>` tag for hero assets. Replacing these with `<img>` and adding `decoding="async"` prevents main-thread blocking during image decode. Using `preconnect` for frequently used domains like `i.imgur.com` and `googletagmanager.com` significantly reduces connection setup time for critical assets.
+**Action:** Always check for non-standard `<image>` tags and ensure `decoding="async"` is applied to images. Use `loading="lazy"` only for images below the fold to avoid negatively impacting LCP.
