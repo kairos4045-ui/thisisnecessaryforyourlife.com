@@ -1,0 +1,3 @@
+## 2026-05-12 - Optimizing Shimmer Animations and Image Loading in Static Landing Pages
+**Learning:** In landing pages with large embedded base64 images, non-standard `<image>` tags can bypass the browser's preload scanner. Additionally, animating `left` instead of `transform` triggers expensive layout/paint cycles, especially on mobile devices where these pages are often viewed.
+**Action:** Always standardize `<image>` to `<img>` for better discovery. Prioritize `transform: translateX()` for shimmer animations and use `will-change: transform` to leverage GPU acceleration. Apply `decoding="async"` to non-critical images to unblock the main thread.
