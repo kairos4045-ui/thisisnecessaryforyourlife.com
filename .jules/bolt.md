@@ -1,0 +1,3 @@
+## 2025-01-24 - Transform vs Layout Percentage Discrepancy
+**Learning:** When refactoring CSS animations from layout-triggering properties like `left` to compositor-friendly `transform: translateX()`, percentage values are not 1:1 if the element's width differs from its parent. `left` percentages are relative to the parent's width, while `transform` percentages are relative to the element's *own* width.
+**Action:** Always verify the element's dimensions relative to its parent before converting layout offsets to transforms. For an element with `width: 200%`, a `left: -100%` offset equates to `translateX(-50%)`.
