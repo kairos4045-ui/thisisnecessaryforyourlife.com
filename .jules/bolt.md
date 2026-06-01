@@ -1,0 +1,3 @@
+## 2025-05-22 - Layout-triggering animations and non-standard tags
+**Learning:** The landing pages in this repository use shimmer animations with the `left` property, which triggers expensive layout recalculations. Additionally, the use of non-standard `<image>` tags instead of `<img>` may hinder browser-level optimizations. Large base64 data URIs are common and can block the main thread during decoding if not handled asynchronously.
+**Action:** Always refactor animations to use `transform` and `will-change`. Standardize `<image>` to `<img>` and apply `decoding="async"` to images with large base64 URIs or heavy payloads to offload decoding from the main thread.
