@@ -1,0 +1,3 @@
+## 2025-05-15 - Performance Anti-Patterns in Landing Pages
+**Learning:** Found that several landing pages in this repo use non-standard `<image>` tags instead of `<img>`. This prevents the browser's preload scanner from identifying and fetching images early, delaying the Largest Contentful Paint (LCP). Additionally, shimmer animations implemented using the `left` property on wide pseudo-elements (`width: 200%`) trigger continuous layout recalculations.
+**Action:** Always convert `<image>` to `<img>` and refactor `left`/`top` animations to use `transform: translateX/Y()` with `will-change: transform` to move work to the compositor thread.
