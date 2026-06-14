@@ -1,0 +1,3 @@
+## 2025-05-24 - Hardware-Accelerated Animations and Tag Standardization
+**Learning:** Using `left` for shimmer animations on large pseudo-elements (e.g., 200% width) triggers layout and paint on every frame. Moving this to `transform: translateX()` and adding `will-change: transform` offloads the work to the GPU. Additionally, non-standard `<image>` tags should be converted to `<img>` to ensure standard browser optimizations like `decoding="async"` work as intended.
+**Action:** Always prefer `transform` over `left/top/margin` for animations. Standardize non-standard HTML tags before applying performance attributes.
