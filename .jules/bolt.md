@@ -1,0 +1,3 @@
+## 2026-06-21 - Shimmer Animation Performance
+**Learning:** Using 'left' for shimmer animations on large pseudo-elements (e.g., 200% width) triggers expensive layout and paint operations on every frame. Refactoring to 'transform: translateX()' and adding 'will-change: transform' offloads this work to the GPU.
+**Action:** Always prefer 'transform' over 'left/top' for continuous animations to ensure high-performance rendering.
