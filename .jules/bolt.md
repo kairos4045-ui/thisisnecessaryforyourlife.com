@@ -1,0 +1,3 @@
+## 2025-05-23 - CSS Shimmer Performance and Tag Standardization
+**Learning:** Using `left` for infinite shimmer animations on large pseudo-elements (e.g., 200% width) triggers Layout and Paint recalculations on every frame. Moving this to `transform: translateX()` and adding `will-change: transform` offloads the work to the GPU, providing significant rendering performance wins and smoother interactions. Additionally, non-standard `<image>` tags are ignored by the browser's Preload Scanner, delaying the discovery and download of critical assets compared to standard `<img>` tags.
+**Action:** Always prefer `transform` for animations and ensure standard HTML tags are used to leverage browser-level optimizations like the Preload Scanner.
