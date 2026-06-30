@@ -1,0 +1,3 @@
+## 2025-01-24 - Shimmer Animation and Preload Scanner Optimization
+**Learning:** Refactoring shimmer animations on large pseudo-elements (e.g., 200% width) from `left` to `transform: translateX()` with `will-change: transform` significantly improves rendering performance by offloading work to the GPU. Additionally, non-standard `<image>` tags (observed in marketing assets) are invisible to the browser's preload scanner, delaying LCP discovery.
+**Action:** Always prioritize `transform` over `left/top` for high-frequency animations. Convert `<image>` to `<img>` immediately and apply `decoding="async"` to large data URIs to keep the main thread responsive.
