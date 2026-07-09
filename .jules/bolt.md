@@ -1,0 +1,3 @@
+## 2025-05-15 - Optimizing CSS Animations for GPU Compositing
+**Learning:** Using the `left` property for continuous animations (like shimmer effects) on large elements triggers layout recalculations and repaints on every frame, consuming significant CPU resources. Moving these animations to `transform: translateX()` allows the browser to handle the animation on the GPU compositor thread, drastically reducing main-thread work and improving frame stability.
+**Action:** Always prefer `transform` and `opacity` for animations; use `will-change: transform` to hint the browser to promote the element to its own compositor layer.
