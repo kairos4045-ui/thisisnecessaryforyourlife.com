@@ -420,7 +420,11 @@ time {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
+    left: 0;
+    /* ⚡ Bolt: Use transform for GPU-accelerated animation.
+       translateX(-100%) on a 200% width element equals left: -200% relative to parent. */
+    transform: translateX(-100%);
+    will-change: transform;
     width: 200%;
     height: 100%;
     background: linear-gradient(
@@ -444,15 +448,16 @@ time {
 }
 
 /* ====== animação do brilho ====== */
+/* ⚡ Bolt: Refactor shimmer to use transform to avoid layout/paint on every frame. */
 @keyframes shimmer {
     0% {
-        left: -200%;
+        transform: translateX(-100%);
     }
     50% {
-        left: 100%;
+        transform: translateX(50%);
     }
     100% {
-        left: -200%;
+        transform: translateX(-100%);
     }
 }
 
