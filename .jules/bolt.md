@@ -1,0 +1,3 @@
+## 2024-05-24 - GPU-Accelerated Shimmer Animations
+**Learning:** Animating `left` or `top` properties triggers layout and paint cycles on every frame, which is computationally expensive and can cause stuttering on the main thread. Switching to `transform: translateX()` (or `translate3d`) offloads the animation to the GPU's compositor thread, ensuring 60fps performance without blocking the UI.
+**Action:** Always prefer `transform` and `opacity` for infinite animations. When animating elements with different widths than their parents, ensure the `translateX` percentage is relative to the element's own width (e.g., for a 200% width element, `left: -200%` becomes `translateX(-100%)`).
