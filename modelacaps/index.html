@@ -420,7 +420,7 @@ time {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
+    left: 0;
     width: 200%;
     height: 100%;
     background: linear-gradient(
@@ -429,8 +429,12 @@ time {
         rgba(255, 255, 255, 0.25),
         transparent
     );
-    animation: shimmer 3.5s linear infinite; /* loop constante */
+    /* ⚡ Bolt: optimized shimmer animation using GPU acceleration */
+    /* Using transform instead of left to avoid layout/paint cycles */
+    animation: shimmer 3.5s linear infinite;
     z-index: 0;
+    transform: translateX(-100%);
+    will-change: transform; /* Hint to browser for layer promotion */
 }
 
 /* efeito leve ao hover */
@@ -446,13 +450,13 @@ time {
 /* ====== animação do brilho ====== */
 @keyframes shimmer {
     0% {
-        left: -200%;
+        transform: translateX(-100%);
     }
     50% {
-        left: 100%;
+        transform: translateX(50%);
     }
     100% {
-        left: -200%;
+        transform: translateX(-100%);
     }
 }
 
