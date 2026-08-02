@@ -1,0 +1,3 @@
+## 2026-03-12 - DOM population loop bottleneck (innerHTML +=)
+**Learning:** Using `innerHTML +=` inside dynamic JavaScript rendering loops (such as testimonials, ingredients, benefits, etc.) is a critical O(n²) performance anti-pattern. Every loop iteration triggers a full DOM serialization, parsing, and reconstruction of the parent container's content. This causes layout thrashing and high CPU usage, which severely impacts TBT (Total Blocking Time) and INP (Interaction to Next Paint) on low-end devices.
+**Action:** Accumulate dynamic HTML strings inside a local string variable during loop iterations, and assign it to the container's `innerHTML` exactly once after the loop completes. Ensure the target element exists before assignment to avoid runtime errors.
