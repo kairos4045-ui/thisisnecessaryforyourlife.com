@@ -415,12 +415,14 @@ time {
     z-index: 1;
 }
 
-/* brilho em movimento contínuo */
+/* brilho em movimento contínuo (GPU accelerated) */
 .cta-button:before {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
+    left: 0;
+    transform: translateX(-100%);
+    will-change: transform;
     width: 200%;
     height: 100%;
     background: linear-gradient(
@@ -446,13 +448,13 @@ time {
 /* ====== animação do brilho ====== */
 @keyframes shimmer {
     0% {
-        left: -200%;
+        transform: translateX(-100%);
     }
     50% {
-        left: 100%;
+        transform: translateX(50%);
     }
     100% {
-        left: -200%;
+        transform: translateX(-100%);
     }
 }
 
