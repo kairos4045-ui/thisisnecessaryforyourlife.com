@@ -415,12 +415,12 @@ time {
     z-index: 1;
 }
 
-/* brilho em movimento contínuo */
+/* brilho em movimento contínuo - GPU accelerated shimmer animation */
 .cta-button:before {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
+    left: 0;
     width: 200%;
     height: 100%;
     background: linear-gradient(
@@ -430,6 +430,7 @@ time {
         transparent
     );
     animation: shimmer 3.5s linear infinite; /* loop constante */
+    will-change: transform; /* Hint browser to promote layer to GPU for smooth animation without layout thrashing */
     z-index: 0;
 }
 
@@ -444,15 +445,16 @@ time {
 }
 
 /* ====== animação do brilho ====== */
+/* GPU-accelerated keyframe animation using transform: translateX() to avoid main-thread repaints */
 @keyframes shimmer {
     0% {
-        left: -200%;
+        transform: translateX(-100%);
     }
     50% {
-        left: 100%;
+        transform: translateX(50%);
     }
     100% {
-        left: -200%;
+        transform: translateX(-100%);
     }
 }
 
