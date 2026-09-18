@@ -919,19 +919,25 @@ li{
 <script>
     const initBenefits = () => {
         const benefits = [];
-        for (let index = 0; index < benefits.length; index++) {
-        const element = benefits[index];
         const blist = document.getElementById('benefits-list');
-        blist.innerHTML += `<li>${element}</li>`;
+        if (!blist) return;
+        let html = '';
+        for (let index = 0; index < benefits.length; index++) {
+            const element = benefits[index];
+            html += `<li>${element}</li>`;
         }
+        blist.innerHTML = html;
     }
     const initReferences = () => {
         const references = [];
-        for (let index = 0; index < references.length; index++) {
-        const element = references[index];
         const blist = document.getElementById('references');
-        blist.innerHTML += `<li><a href="${element}" target="_blank">${element}</a></li>`;
+        if (!blist) return;
+        let html = '';
+        for (let index = 0; index < references.length; index++) {
+            const element = references[index];
+            html += `<li><a href="${element}" target="_blank">${element}</a></li>`;
         }
+        blist.innerHTML = html;
     }
 
     const returnLeaf = (fillColor) => {
@@ -942,18 +948,22 @@ li{
 
     const initIngredients = () => {
         const ingredients = [];
+        const blist = document.getElementById('ingredient-list');
+        if (!blist) return;
+        let html = '';
         for (let index = 0; index < ingredients.length; index++) {
             const par =  index % 2 === 1 ;
             const element = ingredients[index];
-            const blist = document.getElementById('ingredient-list');
             const cardClass = par ? 'ingredient-card' : 'ingredient-card ingredient-card-alt';
-            blist.innerHTML += `<div class="${cardClass}">
+            html += `<div class="${cardClass}">
             <h3>${returnLeaf(par ? 'var(--primary-color)': 'white')} ${element.name}</h3>
             <ul>
             ${element.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
             </ul>
         </div>`;
-    }};
+        }
+        blist.innerHTML = html;
+    };
 
     const male_list = ['P413VyZ','d6yNGww','xu4zSCy','ZHLz3dp','XZtWbJ0','V8Cylbm','t2Hhd6V','wxZorsv'].sort(() => Math.random() - 0.5);
     const female_list = ['O8yOsG3','qlkoYMJ','xuGObwR','Fq830VU','JGaFDs7','fHiXxmD','x9WMnrj','yUvjxPw','hbgcL8U','Y70fO0d','OUBPCSj'].sort(() => Math.random() - 0.5);
@@ -961,10 +971,12 @@ li{
     const initTestimonials = () => {
         const testimonialList = [];
         const maxTestimonials = 4;
-        for (let index = 0; index < Math.min(testimonialList.length, maxTestimonials); index++) {
-        const element = testimonialList[index];
         const blist = document.getElementById('testimonial-list');
-        blist.innerHTML += `<div class="testimonial-card">
+        if (!blist) return;
+        let html = '';
+        for (let index = 0; index < Math.min(testimonialList.length, maxTestimonials); index++) {
+            const element = testimonialList[index];
+            html += `<div class="testimonial-card">
             <p>"${element.history}"</p>
             <div class="testimonial-footer">
                 <img src="https://i.imgur.com/${element.gender === 'male' ? male_list[index] :  female_list[index]}.png" class="avatar" alt="${element.gender} ${index}">
@@ -975,6 +987,7 @@ li{
             </div>
         </div>`;
         }
+        blist.innerHTML = html;
     };
 
     document.addEventListener("DOMContentLoaded", function() {
