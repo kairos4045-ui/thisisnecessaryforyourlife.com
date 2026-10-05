@@ -919,18 +919,24 @@ li{
 <script>
     const initBenefits = () => {
         const benefits = [];
+        let html = '';
         for (let index = 0; index < benefits.length; index++) {
-        const element = benefits[index];
-        const blist = document.getElementById('benefits-list');
-        blist.innerHTML += `<li>${element}</li>`;
+            const element = benefits[index];
+            html += `<li>${element}</li>`;
+        }
+        if (html) {
+            document.getElementById('benefits-list').innerHTML += html;
         }
     }
     const initReferences = () => {
         const references = [];
+        let html = '';
         for (let index = 0; index < references.length; index++) {
-        const element = references[index];
-        const blist = document.getElementById('references');
-        blist.innerHTML += `<li><a href="${element}" target="_blank">${element}</a></li>`;
+            const element = references[index];
+            html += `<li><a href="${element}" target="_blank">${element}</a></li>`;
+        }
+        if (html) {
+            document.getElementById('references').innerHTML += html;
         }
     }
 
@@ -942,18 +948,22 @@ li{
 
     const initIngredients = () => {
         const ingredients = [];
+        let html = '';
         for (let index = 0; index < ingredients.length; index++) {
             const par =  index % 2 === 1 ;
             const element = ingredients[index];
-            const blist = document.getElementById('ingredient-list');
             const cardClass = par ? 'ingredient-card' : 'ingredient-card ingredient-card-alt';
-            blist.innerHTML += `<div class="${cardClass}">
+            html += `<div class="${cardClass}">
             <h3>${returnLeaf(par ? 'var(--primary-color)': 'white')} ${element.name}</h3>
             <ul>
             ${element.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
             </ul>
         </div>`;
-    }};
+        }
+        if (html) {
+            document.getElementById('ingredient-list').innerHTML += html;
+        }
+    };
 
     const male_list = ['P413VyZ','d6yNGww','xu4zSCy','ZHLz3dp','XZtWbJ0','V8Cylbm','t2Hhd6V','wxZorsv'].sort(() => Math.random() - 0.5);
     const female_list = ['O8yOsG3','qlkoYMJ','xuGObwR','Fq830VU','JGaFDs7','fHiXxmD','x9WMnrj','yUvjxPw','hbgcL8U','Y70fO0d','OUBPCSj'].sort(() => Math.random() - 0.5);
@@ -961,19 +971,22 @@ li{
     const initTestimonials = () => {
         const testimonialList = [];
         const maxTestimonials = 4;
+        let html = '';
         for (let index = 0; index < Math.min(testimonialList.length, maxTestimonials); index++) {
-        const element = testimonialList[index];
-        const blist = document.getElementById('testimonial-list');
-        blist.innerHTML += `<div class="testimonial-card">
+            const element = testimonialList[index];
+            html += `<div class="testimonial-card">
             <p>"${element.history}"</p>
             <div class="testimonial-footer">
-                <img src="https://i.imgur.com/${element.gender === 'male' ? male_list[index] :  female_list[index]}.png" class="avatar" alt="${element.gender} ${index}">
+                <img src="https://i.imgur.com/${element.gender === 'male' ? male_list[index] : female_list[index]}.png" class="avatar" alt="${element.gender} ${index}">
                 <div class="right">
                     <div class="testimonial-name">${element.name}</div>
                     <div><img src="https://i.imgur.com/rOeo99a.png" class="test-star" alt="star"></div>
                 </div>
             </div>
         </div>`;
+        }
+        if (html) {
+            document.getElementById('testimonial-list').innerHTML += html;
         }
     };
 
