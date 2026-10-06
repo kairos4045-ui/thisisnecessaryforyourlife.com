@@ -420,7 +420,7 @@ time {
     content: '';
     position: absolute;
     top: 0;
-    left: -200%;
+    left: 0;
     width: 200%;
     height: 100%;
     background: linear-gradient(
@@ -429,6 +429,7 @@ time {
         rgba(255, 255, 255, 0.25),
         transparent
     );
+    will-change: transform; /* GPU-accelerated layer promotion */
     animation: shimmer 3.5s linear infinite; /* loop constante */
     z-index: 0;
 }
@@ -444,15 +445,16 @@ time {
 }
 
 /* ====== animação do brilho ====== */
+/* GPU-accelerated shimmer animation using transform instead of layout-triggering left */
 @keyframes shimmer {
     0% {
-        left: -200%;
+        transform: translateX(-100%);
     }
     50% {
-        left: 100%;
+        transform: translateX(50%);
     }
     100% {
-        left: -200%;
+        transform: translateX(-100%);
     }
 }
 
